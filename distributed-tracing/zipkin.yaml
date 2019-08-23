@@ -4,6 +4,7 @@ metadata:
   name: zipkin-pod
   labels:
     app: zipkin
+  namespace: fazar
 spec:
   replicas: 1
   selector:
@@ -21,9 +22,9 @@ spec:
         - name: _JAVA_OPTIONS
           value: -Dlogging.level.zipkin=DEBUG -Dlogging.level.zipkin2=DEBUG
         - name: RABBIT_URI
-          value: amqp://rabbitmq-service.default.svc.cluster.local:5672
+          value: amqp://rabbitmq-service.fazar.svc.cluster.local:5672
         - name: RABBIT_ADDRESSES
-          value: rabbitmq-service.default.svc.cluster.local
+          value: rabbitmq-service.fazar.svc.cluster.local
         ports:
         - containerPort: 9411
 ---
@@ -31,6 +32,7 @@ apiVersion: v1
 kind: Service
 metadata:
   name: zipkin-service
+  namespace: fazar
 spec:
   type: NodePort
   ports:

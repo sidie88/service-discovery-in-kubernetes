@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration debug="true">
+	<include resource="org/springframework/boot/logging/logback/defaults.xml"/>
+	<appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${HOSTNAME} ${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>utf8</charset>
+        </encoder>
+    </appender>
+	<appender name="amqp"
+		class="org.springframework.amqp.rabbit.logback.AmqpAppender">
+		<host>rabbitmq-service.fazar.svc.cluster.local</host>
+		<port>5672</port>
+		<virtualHost>/</virtualHost>
+		<username>guest</username>
+		<password>guest</password>
+		<exchangeType>queue</exchangeType>
+		<exchangeName>fazar</exchangeName>
+		<applicationId>AmqpAppenderTest</applicationId>
+		<routingKeyPattern>fazar_key</routingKeyPattern>
+		<generateId>true</generateId>
+		<contentType>text/plain</contentType>
+		<maxSenderRetries>2</maxSenderRetries>
+		<charset>UTF-8</charset>
+		<layout>
+			<pattern><![CDATA[ %d %p %t [%c] - <%m>%n ]]></pattern>
+		</layout>
+	</appender>
+	<logger name="com.cxrus.microservices.currencyexchangeservice"
+		level="DEBUG">
+		<appender-ref ref="amqp" />
+		<appender-ref ref="CONSOLE" />
+	</logger>
+</configuration>

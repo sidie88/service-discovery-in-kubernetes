@@ -4,6 +4,7 @@ metadata:
   name: currency-exchange-pod
   labels:
     app: currency-exchange
+  namespace: fazar
 spec:
   replicas: 3
   selector:
@@ -16,10 +17,10 @@ spec:
     spec:
       containers:
       - name: currency-exchange
-        image: sidie88/currency-exchange-service:v1
+        image: fazarsn/currency-exchange:v1
         env:
         - name: RABBIT_URI
-          value: amqp://rabbitmq-service.default.svc.cluster.local:5672
+          value: amqp://rabbitmq-service.fazar.svc.cluster.local:5672
         ports:
         - containerPort: 80
 ---
