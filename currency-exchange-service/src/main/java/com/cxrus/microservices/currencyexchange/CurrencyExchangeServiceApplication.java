@@ -1,4 +1,4 @@
-package com.cxrus.microservices.currencyexchangeservice;
+package com.cxrus.microservices.currencyexchange;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

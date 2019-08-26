@@ -1,10 +1,11 @@
-package com.cxrus.microservices.currencyexchangeservice.model;
+package com.cxrus.microservices.currencyexchange.model;
 
 import java.math.BigDecimal;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 
 @Entity
@@ -22,6 +23,9 @@ public class ExchangeValue {
 	private BigDecimal conversionMultiple;
 	private int port;
 	private String ipAddress;
+	
+	@Transient
+	private int quantity;
 	
 	public ExchangeValue() {}
 
@@ -79,6 +83,14 @@ public class ExchangeValue {
 
 	public void setIpAddress(String ipAddress) {
 		this.ipAddress = ipAddress;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	@Override
