@@ -6,24 +6,29 @@ node {
   remote.user = 'tarsidi'
   remote.password = 'Di49tars'
   remote.allowAnyHosts = true
-  stage('Sync source code') {
-    sshCommand remote: remote, command: "cd service-discovery-in-kubernetes/ "+
-        " && git pull origin master"
+  stage('Git pull') {
+    sshCommand remote: remote, command: "cd kubernetes-service/ && "+
+        "git pull origin master"
   }
-  stage('Build docker') {
-	withCredentials([usernamePassword(credentialsId: 'sidie88-hub.docker.com', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
-		sshCommand remote: remote, command: "cd service-discovery-in-kubernetes/ && "+
-			"./maven-build.sh currency-exchange-service && " +
-			"cd currency-exchange-service/ && " +
-			"docker image build -t sidie88/currency-exchange:$BUILD_TAG . && " +
-			"docker login -u $USERNAME -p $PASSWORD && " +
-			"docker image push sidie88/currency-exchange:$BUILD_TAG"
-	}
+  stage('Build image') {
+    sshCommand remote: remote, command: "cd kubernetes-service/ && " +
+        " ./build-maven.sh rnd-angular7 sidie88/backend-service:$BUILD_TAG"
+  }
+  stage('Push image') {
+      withCredentials([usernamePassword(credentialsId: 'sidie88-hub.docker.com', 
+        usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
+        sshCommand remote: remote, command: "cd kubernetes-service/ && " +
+            "docker login -u $USERNAME -p $PASSWORD && " +
+			"docker image push sidie88/backend-service:$BUILD_TAG"  
+      }
+  }
+  stage('Update image tag') {
+    sshCommand remote: remote, command:"sed \"s/IMAGE_TAG/sidie88\\/backend-service:$BUILD_TAG/g\" "+
+        "kubernetes-service/rnd-angular7/backend-service.yaml.bak > "+
+        "kubernetes-service/rnd-angular7/backend-service.yaml"
   }
   stage('Deploy') {
-    sshCommand remote: remote, command: "kubectl --record "+
-        " deployment.apps/currency-exchange-pod -n tarsidi"+
-        " set image deployment.v1.apps/currency-exchange-pod " +
-        " currency-exchange=sidie88/currency-exchange:$BUILD_TAG"
+    sshCommand remote: remote, command: "kubectl apply -f "+
+        "kubernetes-service/rnd-angular7/backend-service.yaml"
   }
 }
