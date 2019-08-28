@@ -6,6 +6,7 @@ import java.util.Map;
 import org.apache.kafka.clients.consumer.ConsumerConfig;
 import org.apache.kafka.common.serialization.StringDeserializer;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.kafka.annotation.EnableKafka;
@@ -35,6 +36,7 @@ public class KafkaConsumerConfig {
 	}
 	
 	@Bean
+	@ConditionalOnMissingBean(name = "kafkaListenerContainerFactory")
 	public ConcurrentKafkaListenerContainerFactory<String, ExchangeValue> requestObjetListenerContainerFactory() {
 		ConcurrentKafkaListenerContainerFactory<String, ExchangeValue> factory = new ConcurrentKafkaListenerContainerFactory<>();
 		factory.setConsumerFactory(exchangeConsumerFactory());
