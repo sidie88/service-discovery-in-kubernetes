@@ -17,7 +17,7 @@ spec:
     spec:
       containers:
       - name: microservices-logging-service
-        image: sidie88/microservices-logging-service:v1
+        image: sidie88/microservices-logging:v1
         env:
         - name: MY_NAMESPACE
           valueFrom:
