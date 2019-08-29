@@ -29,5 +29,6 @@ spec:
           value: |-
                   -Dspring.rabbitmq.host=rabbitmq-service.$(MY_NAMESPACE).svc.cluster.local
                   -Dspring.rabbitmq.port=5672
+                  -Dlogging.rabbitmq.queue=log-message-queue
         ports:
         - containerPort: 8181
