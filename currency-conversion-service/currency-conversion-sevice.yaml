@@ -29,7 +29,7 @@ spec:
           value: |-
                   -Dspring.zipkin.base-url=http://zipkin-service.$(MY_NAMESPACE).svc.cluster.local:9411/
                   -Dspring.data.elasticsearch.cluster-nodes=172.20.103.151:9200
-                  -Dkafka.bootstrapAddress=kafka-broker-0.kafka-server.default.svc.cluster.local:9092
+                  -Dkafka.bootstrapAddress=172.20.103.91:9092
                   -Dapi.gateway.server.url=http://spring-api-gateway-services.$(MY_NAMESPACE).svc.cluster.local:8762/
         ports:
         - containerPort: 8100

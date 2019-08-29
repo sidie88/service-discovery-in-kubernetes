@@ -5,6 +5,13 @@ public class RequestObject {
 	private String to;
 	private int quantity;
 	
+	public RequestObject(String from, String to, int quantity) {
+		super();
+		this.from = from;
+		this.to = to;
+		this.quantity = quantity;
+	}
+	
 	public String getFrom() {
 		return from;
 	}

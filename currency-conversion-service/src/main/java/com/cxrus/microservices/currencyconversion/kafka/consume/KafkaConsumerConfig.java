@@ -24,15 +24,29 @@ public class KafkaConsumerConfig {
 
 	@Value(value = "${kafka.bootstrapAddress}")
 	private String bootstrapAddress;
+
+	@Value(value = "${currency.exchange.group.id}")
+	private String consumerGroupId;
 	
 	@Bean
 	public ConsumerFactory<String, ExchangeValue> exchangeConsumerFactory(){
+		JsonDeserializer<ExchangeValue> deserializer = new JsonDeserializer<>(ExchangeValue.class);
+	    deserializer.setRemoveTypeHeaders(true);
+	    deserializer.addTrustedPackages("*");
+	    deserializer.setUseTypeMapperForKey(true);
+		
 		Map<String, Object> props = new HashMap<>();
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, consumerGroupId);
+		props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
+		props.put(JsonDeserializer.USE_TYPE_INFO_HEADERS , false);
+		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, deserializer);
+	    
 		return new DefaultKafkaConsumerFactory<>(
 			      props,
 			      new StringDeserializer(), 
-			      new JsonDeserializer<>(ExchangeValue.class));
+			      deserializer);
 	}
 	
 	@Bean

@@ -26,16 +26,16 @@ public class MessageListener {
 	@Autowired
 	private ExchangeValueRepository repository;
 	
-	@KafkaListener(topics = "${currency.conversion.topic.name}", containerFactory = "requestObjetListenerContainerFactory")
+	@KafkaListener(topics = "${currency.conversion.topic.name}", groupId = "${currency.conversion.group.id}", containerFactory = "requestObjetListenerContainerFactory")
 	public void requestObjectListener(RequestObject message) {
 		logger.info("Received Messasge : " + message);
 		ExchangeValue exchangeValue = 
 				repository.findByFromAndTo(message.getFrom(), message.getTo());
 		if (exchangeValue != null) {
 			exchangeValue.setQuantity(message.getQuantity());
-			exchangeValue
-					.setPort(Integer.parseInt(environment.getProperty("CURRENCY_EXCHANGE_SERVICE_PORT_80_TCP_PORT")));
-			exchangeValue.setIpAddress(environment.getProperty("CURRENCY_EXCHANGE_SERVICE_PORT_80_TCP_ADDR"));
+//			exchangeValue
+//					.setPort(Integer.parseInt(environment.getProperty("CURRENCY_EXCHANGE_SERVICE_PORT_80_TCP_PORT")));
+//			exchangeValue.setIpAddress(environment.getProperty("CURRENCY_EXCHANGE_SERVICE_PORT_80_TCP_ADDR"));
 			logger.info("Pod name = " + environment.getProperty("HOSTNAME"));
 			logger.info("{}", exchangeValue);
 			producer.sendMessage(exchangeValue);

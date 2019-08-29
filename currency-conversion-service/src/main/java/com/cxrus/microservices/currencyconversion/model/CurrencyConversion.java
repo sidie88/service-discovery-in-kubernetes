@@ -2,12 +2,7 @@ package com.cxrus.microservices.currencyconversion.model;
 
 import java.math.BigDecimal;
 
-import org.springframework.data.annotation.Id;
-import org.springframework.data.elasticsearch.annotations.Document;
-
-@Document(indexName = "currency", type = "currency-conversion")
 public class CurrencyConversion {
-	@Id
 	private String id;
 	private String from;
 	private String to;

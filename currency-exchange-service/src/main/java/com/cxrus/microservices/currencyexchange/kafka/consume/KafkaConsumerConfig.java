@@ -23,14 +23,45 @@ public class KafkaConsumerConfig {
 	@Value(value = "${kafka.bootstrapAddress}")
 	private String bootstrapAddress;
 	
+	@Value(value = "${currency.exchange.group.id}")
+	private String consumerGroupId;
+	
 	@Bean
-	public ConsumerFactory<String, RequestObject> requestObjetFactory(){
+	public ConsumerFactory<String, String> consumerFactory() {
 		Map<String, Object> props = new HashMap<>();
 		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+		return new DefaultKafkaConsumerFactory<>(props);
+	}
+
+	@Bean
+	public ConcurrentKafkaListenerContainerFactory<String, String> kafkaListenerContainerFactory() {
+		ConcurrentKafkaListenerContainerFactory<String, String> factory = new ConcurrentKafkaListenerContainerFactory<>();
+		factory.setConsumerFactory(consumerFactory());
+		return factory;
+	}
+	
+	@Bean
+	public ConsumerFactory<String, RequestObject> requestObjetFactory(){
+		
+		JsonDeserializer<RequestObject> deserializer = new JsonDeserializer<>(RequestObject.class);
+	    deserializer.setRemoveTypeHeaders(true);
+	    deserializer.addTrustedPackages("*");
+	    deserializer.setUseTypeMapperForKey(true);
+		
+		Map<String, Object> props = new HashMap<>();
+		props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, bootstrapAddress);
+		props.put(ConsumerConfig.GROUP_ID_CONFIG, consumerGroupId);
+		props.put(JsonDeserializer.TRUSTED_PACKAGES, "*");
+		props.put(JsonDeserializer.USE_TYPE_INFO_HEADERS , false);
+		props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class);
+		props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, deserializer);
+	    
 		return new DefaultKafkaConsumerFactory<>(
 			      props,
 			      new StringDeserializer(), 
-			      new JsonDeserializer<>(RequestObject.class));
+			      deserializer);
 	}
 	
 	@Bean

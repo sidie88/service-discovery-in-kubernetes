@@ -29,7 +29,7 @@ spec:
           value: |- 
                   -Dspring.zipkin.base-url=http://zipkin-service.$(MY_NAMESPACE).svc.cluster.local:9411/
                   -Dspring.zipkin.sender.type=rabbit
-                  -Dkafka.bootstrapAddress=kafka-server.$(MY_NAMESPACE).svc.cluster.local:9092
+                  -Dkafka.bootstrapAddress=172.20.103.91:9092
         ports:
         - containerPort: 80
 ---
