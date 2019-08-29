@@ -1,4 +1,4 @@
-package com.cxrus.microservices.currencyexchangeservice.controller;
+package com.cxrus.microservices.currencyexchange.controller;
 
 
 import org.slf4j.Logger;
@@ -9,8 +9,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.cxrus.microservices.currencyexchangeservice.model.ExchangeValue;
-import com.cxrus.microservices.currencyexchangeservice.repository.ExchangeValueRepository;
+import com.cxrus.microservices.currencyexchange.model.ExchangeValue;
+import com.cxrus.microservices.currencyexchange.repository.ExchangeValueRepository;
 
 @RestController
 public class CurrencyExchangeController {

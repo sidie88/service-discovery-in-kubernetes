@@ -26,7 +26,11 @@ spec:
         - name: RABBIT_URI
           value: amqp://rabbitmq-service.$(MY_NAMESPACE).svc.cluster.local:5672
         - name: _JAVA_OPTIONS
-          value: -Dspring.zipkin.base-url=http://zipkin-service.$(MY_NAMESPACE).svc.cluster.local:9411/
+          value: |-
+                  -Dspring.zipkin.base-url=http://zipkin-service.$(MY_NAMESPACE).svc.cluster.local:9411/
+                  -Dspring.data.elasticsearch.cluster-nodes=172.20.103.151:9200
+                  -Dkafka.bootstrapAddress=172.20.103.91:9092
+                  -Dapi.gateway.server.url=http://spring-api-gateway-services.$(MY_NAMESPACE).svc.cluster.local:8762/
         ports:
         - containerPort: 8100
 ---
