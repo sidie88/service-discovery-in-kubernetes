@@ -1,2 +1,9 @@
 
 ~$bernetes Hands.docx
+microservices-logging/.classpath
+microservices-logging/.classpath
+microservices-logging/.classpath
+microservices-logging/.project
+microservices-logging/target/classes/META-INF/maven/com.cxrus.microservices.loging/microservices-logging/pom.xml
+microservices-logging/target/classes/META-INF/maven/com.cxrus.microservices.loging/microservices-logging/pom.properties
+*.class
