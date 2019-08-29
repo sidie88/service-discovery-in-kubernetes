@@ -1,0 +1,33 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: microservices-logging-pod
+  labels:
+    app: microservices-logging
+  namespace: tarsidi
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: microservices-logging
+  template:
+    metadata:
+      labels:
+        app: microservices-logging
+    spec:
+      containers:
+      - name: microservices-logging-service
+        image: sidie88/microservices-logging-service:v1
+        env:
+        - name: MY_NAMESPACE
+          valueFrom:
+            fieldRef:
+              fieldPath: metadata.namespace
+        - name: RABBIT_URI
+          value: amqp://rabbitmq-service.$(MY_NAMESPACE).svc.cluster.local:5672
+        - name: _JAVA_OPTIONS
+          value: |-
+                  -Dspring.rabbitmq.host=rabbitmq-service.$(MY_NAMESPACE).svc.cluster.local
+                  -Dspring.rabbitmq.port=5672
+        ports:
+        - containerPort: 8181
