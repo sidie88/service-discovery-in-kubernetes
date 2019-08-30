@@ -79,4 +79,19 @@
 
 `kubectl apply -f service-discovery-in-kubernetes/microservices-logging/microservices-logging.yaml`
   
+# Deployment using jenkins
+
+If there any code changes, you can deploy new changes using jenkins by following these steps below :
+
+1. Create your docker hub credential at > jenkins > credentials > System > Global credentials (unrestricted) > Add Credentials
+
+2. Type your Username, Password, and ID. ID will be used at pipeline script
+
+3. Create deployment at Jenkins > New Item > type deloyment name at "Enter an item name"
+
+4. choose Pipeline and click OK
+
+5. Go to Pipeline at the botom of the page, copy & paste all code from Jenkinsfile into "Script" text area, and click Save
+
+6. Click Build Now at the left of the page to start deployment
 
