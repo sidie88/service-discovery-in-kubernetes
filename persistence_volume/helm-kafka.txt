@@ -1,0 +1,584 @@
+    1  kubectl cluster-info
+    2  ls
+    3  git
+    4  git clone https://github.com/sidie88/service-discovery-in-kubernetes.git
+    5  ls
+    6  clear
+    7  cd service-discovery-in-kubernetes/
+    8  ls
+    9  cd distributed-tracing/
+   10  ls
+   11  cat rabbitmq.yaml 
+   12  kubectl apply -f rabbitmq.yaml 
+   13  kubectl get pods
+   14  kubectl get services
+   15  kubectl get pods
+   16  kubectl get deployment
+   17  kubectl describe deployments rabbitmq-pod
+   18  kubectl get pods
+   19  kubectl describe pods rabbitmq-pod-7b549d97f9-h2d7f
+   20  kubectl get pods
+   21  kubectl apply -f zipkin.yaml 
+   22  kubectl get pods
+   23  kubectl describe pods zipkin-pod-6b9744796b-ppxrv
+   24  kubectl get pods
+   25  kubectl describe pods zipkin-pod-6b9744796b-ppxrv
+   26  kubectl get pods
+   27  kubectl describe deployments zipkin-pod
+   28  kubectl get pods
+   29  kubectl describe pods zipkin-pod-6b9744796b-ppxrv
+   30  kubectl get pods
+   31  kubectl logs zipkin-pod-6b9744796b-ppxrv --previous
+   32  kubectl get pods --all-namespaces
+   33  kubectl get services
+   34  kubectl apply -f https://k8s.io/examples/admin/dns/busybox.yaml
+   35  kubectl get pods busybox
+   36  kubectl exec -ti busybox -- nslookup kubernetes.default
+   37  kubectl get pods --namespace=kube-system -l k8s-app=coredns
+   38  kubectl get pods --namespace=kube-system -l 
+   39  kubectl get pods --namespace=kube-system
+   40  kubectl get pods --namespace=kube-system -l k8s-app=kube-dns
+   41  for p in $(kubectl get pods --namespace=kube-system -l k8s-app=kube-dns -o name); do kubectl logs --namespace=kube-system $p; done
+   42  kubectl get ep kube-dns --namespace=kube-system
+   43  kubectl exec -ti busybox -- nslookup kubernetes
+   44  iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
+   45  sudo iptables -F && iptables -t nat -F && iptables -t mangle -F && iptables -X
+   46  history
+   47  cd service-discovery-in-kubernetes/
+   48  cd distributed-tracing/
+   49  ls
+   50  cd service-discovery-in-kubernetes/
+   51  cd spring-api-gateway-server/
+   52  docker image build -t spring-api-gateway-server:v1 .
+   53  sudo usermod -aG docker $USER
+   54  docker run hello-world
+   55  logout
+   56  docker run hello-world
+   57  kubectl get nodes
+   58  kubectl get pods
+   59  kubectl describe pods zipkin-pod-6b9744796b-ppxrv
+   60  ls
+   61  cd service-discovery-in-kubernetes/
+   62  ls
+   63  cd currency-exchange-service/
+   64  ls
+   65  kubectl get deployments
+   66  kubectl describe deployments zipkin-pod
+   67  kubectl describe deployments rabbitmq-pod
+   68  kubectl get services
+   69  kubectl describe services rabbitmq-service
+   70  kubectl get nodes
+   71  kubectl describe nodes lab-worknodes1
+   72  history
+   73  kubectl describe deployments zipkin-pod
+   74  kubectl describe services zipkin-service
+   75  cat currency-exchange-sevice.yaml 
+   76  kubectl apply -f currency-exchange-sevice.yaml 
+   77  kubectl describe deployments currency-exchange-pod
+   78  kubectl get pods
+   79  kubectl get pods --selector=app=currency-exchange
+   80  kubectl get services --selector=app=currency-exchange
+   81  kubectl get services --selector=name=currency-exchange-service
+   82  kubectl get services
+   83  kubectl get services --field-selector metadata.name=currency-exchange-service
+   84  kubectl describe services currency-exchange-service
+   85  kubectl get deployment currency-exchange-pod
+   86  kubectl port-forward deployment/currency-exchange-pod 8000:80
+   87  kubectl port-forward svc/currency-exchange-service 8888:80
+   88  kubectl port-forward svc/currency-exchange-service 3000:80
+   89  kubectl port-forward svc/currency-exchange-service 30000:80
+   90  kubectl get pods --selector=app=currency-exchange
+   91  kubectl port-forward currency-exchange-pod-68d85fd75c-7hx78 7000:80
+   92  clear
+   93  netstat -na | grep 55555
+   94  iptables-save | grep 55555
+   95  systemctl status firewalld
+   96  kubectl port-forward currency-exchange-pod-68d85fd75c-7hx78 7000:80
+   97  kubectl port-forward svc/currency-exchange-service 30000:80
+   98  kubectl port-forward svc/currency-exchange-service 8000:80
+   99  cd ../spring-api-gateway-server/
+  100  clear
+  101  ls
+  102  docker image build –t spring-api-gateway-server:v1 .
+  103  docker image build -t spring-api-gateway-server:v1 .
+  104  docker run hello-world
+  105  cd service-discovery-in-kubernetes/spring-api-gateway-server/
+  106  ls
+  107  docker image build -t spring-api-gateway-server:v1 .
+  108  cd ../maven-base-image/
+  109  ls
+  110  cd ../spring-api-gateway-server/
+  111  nano Dockerfile 
+  112  docker image build -t spring-api-gateway-server:v1 .
+  113  docker login
+  114  docker image build -t spring-api-gateway-server:v1 .
+  115  docker image pull sidie88/maven-base:v1
+  116  docker images
+  117  nano Dockerfile 
+  118  docker image build -t spring-api-gateway-server:v1 .
+  119  docker image ls
+  120  docker -v
+  121  sudo yum install -y yum-utils   device-mapper-persistent-data   lvm2
+  122  docker image build -t spring-api-gateway-server:v1 .
+  123  nano Dockerfile 
+  124  docker image build -t spring-api-gateway-server:v1 .
+  125  cd ../maven-base-image/
+  126  docker image build -t maven-base:v1 .
+  127  cd ../spring-api-gateway-server/
+  128  nano spring-api-gateway-server.yaml 
+  129  nano Dockerfile 
+  130  docker images
+  131  docker image build -t spring-api-gateway-server:v1 .
+  132  docker version
+  133  yum remove docker                   docker-common                   docker-selinux \
+  134  docker images
+  135  ls
+  136  cd service-discovery-in-kubernetes/
+  137  docker container prune
+  138  cd distributed-tracing/
+  139  ls
+  140  clear
+  141  kubectl apply -f rabbitmq.yaml 
+  142  kubectl config view
+  143  cd $HOME
+  144  LS
+  145  ls
+  146  cd .kube/
+  147  curl -O https://raw.githubusercontent.com/sidie88/service-discovery-in-kubernetes/master/kube-config/config
+  148  cd ../
+  149  cd service-discovery-in-kubernetes/distributed-tracing/
+  150  ls
+  151  kubectl apply -f rabbitmq.yaml 
+  152  kubectl get pods
+  153  kubectl describe deployments rabbitmq-pod
+  154  kubectl get pods
+  155  kubectl describe deployments rabbitmq-pod
+  156  kubectl get rs rabbmitmq-pod
+  157  kubectl get all
+  158  kubectl describe pods rabbitmq-pod-7b549d97f9-tn98z
+  159  kubectl get pods
+  160  kubectl apply -f zipkin.yaml 
+  161  kubectl get pods
+  162  kubectl describe pods zipkin-pod-6b9744796b-8v9wl
+  163  kubectl rollout status deployment.v1.apps/zipkin-pod
+  164  kubectl get pods
+  165  kubectl logs -follow zipkin-pod-6b9744796b-8v9wl
+  166  kubectl logs --follow zipkin-pod-6b9744796b-8v9wl
+  167  clear
+  168  cd ../spring-api-gateway-server/
+  169  docker images
+  170  nano spring-api-gateway-server.yaml 
+  171  nano Dockerfile 
+  172  nano spring-api-gateway-server.yaml 
+  173  cat spring-api-gateway-server.yaml 
+  174  docker image build -t spring-api-gateway-server:v1
+  175  docker image build -t spring-api-gateway-server:v1 .
+  176  docker images
+  177  docker container prune
+  178  docker image prune
+  179  clear
+  180  kubectl get pods
+  181  docker images
+  182  docker image tag spring-api-gateway-server:v1 sidie88/spring-api-gateway-server:v1
+  183  docker login
+  184  docker image push sidie88/spring-api-gateway-server:v1
+  185  kubectl get services
+  186  kubectl get nodes
+  187  kubectl describe nodes lab-worknodes1 
+  188  kubectl get services
+  189  cd $HOME
+  190  history >> history-command.txt
+  191  ls
+  192  cat history-command.txt 
+  193  kubetl get pods
+  194  kubectl get pods
+  195  cd service-discovery-in-kubernetes/currency-exchange-service/
+  196  ls
+  197  kubectl apply -f currency-exchange-sevice.yaml
+  198  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  199  kubectl get rs
+  200  kubectl get rs currency-exchange-popd
+  201  kubectl get rs currency-exchange-pod
+  202  kubectl get rs --selector=app=currency-exchange
+  203  kubectl describe services currency-exchange-service
+  204  kubectl port-forward svc/currency-exchange-service 8000:80
+  205  clear
+  206  docker images
+  207  cd ../spring-api-gateway-server/
+  208  ls
+  209  cat spring-api-gateway-server.yaml 
+  210  history | grep bussy
+  211  history | grep busy
+  212  kubectl exec -ti busybox -- nslookup currency-exchange-service.default.svc.cluster.local
+  213  kubectl apply -f spring-api-gateway-server.yaml
+  214  kubectl rollout status deployment.v1.apps/spring-api-gateway-server-pod
+  215  docker image build -t spring-api-gateway-server:v1 .
+  216  nano spring-api-gateway-server.yaml 
+  217  kubectl apply -f spring-api-gateway-server.yaml 
+  218  kubectl rollout status deployment.v1.apps/spring-api-gateway-server-pod
+  219  kubectl describe deployments spring-api-gateway-server-pod
+  220  kubectl get rs --selector=app=spring-api-gateway-server
+  221  kubectl get pods --selector=app=spring-api-gateway-server
+  222  kubectl get services --field-selector metadata.name=spring-api-gateway-services
+  223  kubectl describe services spring-api-gateway-services
+  224  kubectl get services --field-selector metadata.name=spring-api-gateway-services
+  225  nano spring-api-gateway-server.yaml 
+  226  kubectl apply -f spring-api-gateway-server.yaml 
+  227  kubectl get services --field-selector metadata.name=spring-api-gateway-services
+  228  kubectl describe services spring-api-gateway-services
+  229  kubectl exec -ti busybox -- nslookup spring-api-gateway-services.default.svc.cluster.local
+  230  kubectl get pods --selector=app=spring-api-gateway-server
+  231  kubectl describe pods spring-api-gateway-server-pod-7cb54d8448-gnkn7
+  232  kubectl get services
+  233  kubectl get pods
+  234  kubectl logs --follow spring-api-gateway-server-pod-7cb54d8448-gnkn7 
+  235  cd ../currency-conversion-service/
+  236  clear
+  237  ls
+  238  docker image build -t currency-conversion-service:v1 .
+  239  nano Dockerfile 
+  240  docker images
+  241  docker image build -t currency-conversion-service:v1 .
+  242  nano Dockerfile 
+  243  docker image build -t currency-conversion-service:v1 .
+  244  docker images
+  245  docker image prune
+  246  docker container prune
+  247  clear
+  248  docker images
+  249  cd ../maven-base-image/
+  250  docker image build -t maven-base:v1 .
+  251  docker image prune
+  252  docker container prune
+  253  cd ../currency-conversion-service/
+  254  nano Dockerfile 
+  255  docker image build -t currency-conversion-service:v1 .
+  256  nano currency-conversion-sevice.yaml 
+  257  cat currency-conversion-sevice.yaml 
+  258  kubectl apply –f currency-conversion-sevice.yaml
+  259  kubectl apply -f currency-conversion-sevice.yaml 
+  260  nano currency-conversion-sevice.yaml 
+  261  kubectl apply -f currency-conversion-sevice.yaml 
+  262  kubectl rollout status deployment.v1.apps/currency-conversion-pod
+  263  docker images
+  264  docker image tag currency-conversion-service:v1 sidie88/currency-conversion-service:v1
+  265  docker image push sidie88/currency-conversion-service:v1
+  266  nano currency-conversion-sevice.yaml 
+  267  kubectl apply -f currency-conversion-sevice.yaml 
+  268  kubectl rollout status deployment.v1.apps/currency-conversion-pod
+  269  kubectl describe deployments currency-conversion-pod
+  270  kubectl get rs --selector=app=currency-conversion
+  271  kubectl get pods --selector=app=currency-conversion
+  272  kubectl describe pods currency-conversion-pod-68557556b6-m544l
+  273  kubectl get services --field-selector metadata.name=currency-conversion-service
+  274  kubectl describe services currency-conversion-service
+  275  kubectl get pods
+  276  kubectl logs --follow currency-conversion-pod-68557556b6-m544l
+  277  nano currency-conversion-sevice.yaml 
+  278  kubectl apply -f currency-conversion-sevice.yaml 
+  279  kubectl describe services currency-conversion-service
+  280  nano currency-conversion-sevice.yaml 
+  281  kubectl apply -f currency-conversion-sevice.yaml 
+  282  kubectl describe services currency-conversion-service
+  283  kubectl get pods
+  284  kubectl describe pods currency-conversion-pod-58d6f8b7f7-hvbdb
+  285  kubectl get pods
+  286  kubectl exec -ti busybox -- nslookup currency-conversion-service.default.svc.cluster.local
+  287  kubectl port-forward svc/currency-conversion-service 8000:80
+  288  kubectl get services
+  289  cd ../currency-exchange-service/
+  290  ls
+  291  clear
+  292  ll
+  293  cd src/main/resources/
+  294  nano logback.xml
+  295  cat logback.xml 
+  296  kubectl get pods
+  297  kubectl exec currency-exchange-pod-68d85fd75c-2mdgq -- printenv
+  298  cd ../
+  299  cd java/com/cxrus/microservices/currencyexchangeservice/controller/
+  300  ls
+  301  nano CurrencyExchangeController.java 
+  302  cd ../
+  303  ls
+  304  docker image build -t sidie88/currency-exchange-sevice:v2 .
+  305  nano Dockerfile 
+  306  docker image build -t sidie88/currency-exchange-sevice:v2 .
+  307  docker push sidie88/currency-exchange-sevice:v2
+  308  clear
+  309  kubectl get deployments
+  310  kubectl get all
+  311  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-service:v2
+  312  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  313  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-sevice:v2
+  314  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  315  kubectl get pods
+  316  kubectl logs --follow currency-exchange-pod-689f7fdb7d-nbfvp
+  317  kubectl logs --follow currency-exchange-pod-689f7fdb7d-nz4v5
+  318  kubectl logs currency-exchange-pod-689f7fdb7d-wtmft
+  319  kubectl logs --follow currency-exchange-pod-689f7fdb7d-wtmft
+  320  cd src/main/resources/
+  321  nano application.properties 
+  322  cd ../../../
+  323  docker image build -t sidie88/currency-exchange-sevice:v3 .
+  324  docker push sidie88/currency-exchange-sevice:v3
+  325  ping hub.docker.com
+  326  docker image push sidie88/currency-exchange-sevice:v3
+  327  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-service:v3
+  328  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  329  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-sevice:v3
+  330  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  331  nanon src/main/resources/application.properties 
+  332  nano src/main/resources/application.properties 
+  333  nano src/main/resources/logback.xml 
+  334  docker image build -t sidie88/currency-exchange-sevice:v4 .
+  335  docker image push sidie88/currency-exchange-sevice:v4
+  336  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-sevice:v4
+  337  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  338  kubectl get services
+  339  nano src/main/resources/logback.xml 
+  340  docker image build -t sidie88/currency-exchange-sevice:v5 .
+  341  docker image push sidie88/currency-exchange-sevice:v5
+  342  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-sevice:v5
+  343  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  344  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-sevice:v4
+  345  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  346  kubectl rollout history deployment.v1.apps/currency-exchange-pod
+  347  kubectl get pods
+  348  kubectl get services
+  349  cd service-discovery-in-kubernetes/currency-exchange-service/
+  350  nano src/main/resources/logback.xml 
+  351  docker image build -t sidie88/currency-exchange-sevice:topic .
+  352  docker image push sidie88/currency-exchange-sevice:topic
+  353  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-sevice:topic
+  354  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  355  kubectl get pods
+  356  nano src/main/resources/logback.xml 
+  357  docker image build -t sidie88/currency-exchange-sevice:queue .
+  358  docker image push sidie88/currency-exchange-sevice:queue
+  359  nano src/main/resources/logback.xml 
+  360  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-sevice:queue
+  361  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  362  kubectl get pods
+  363  kubectl describe pods currency-exchange-pod-58c6865ff9-9555t
+  364  kubectl exec currency-exchange-pod-58c6865ff9-9555t -- printenv
+  365  kubectl exec currency-exchange-pod-58c6865ff9-9555t -- printenv | grep CURRENCY-EXCHANGE
+  366  kubectl exec currency-exchange-pod-58c6865ff9-9555t -- printenv | grep CURRENCY_EXCHANGE
+  367  cd service-discovery-in-kubernetes/currency-exchange-service/
+  368  ls
+  369  cd src/main/java/
+  370  nano com/cxrus/microservices/currencyexchangeservice/model/ExchangeValue.java 
+  371  cd ../../../../
+  372  cd currency-exchange-service/
+  373  ls
+  374  docker image build -t sidie88/currency-exchange-sevice:v1 .
+  375  docker image push sidie88/currency-exchange-sevice:v1
+  376  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-sevice:v1
+  377  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  378  kubectl get pods --selector=app=spring-api-gateway-server -n default
+  379  kubectl get pods --selector=app=spring-api-gateway-server -n test
+  380  nano src/main/resources/logback.xml 
+  381  docker image build -t sidie88/currency-exchange-sevice:logging .
+  382  docker image push sidie88/currency-exchange-sevice:logging
+  383  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-sevice:logging
+  384  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  385  docker container prune
+  386  docker image prune
+  387  docker images
+  388  docker image rm sidie88/currency-exchange-sevice:queue
+  389  docker image rm sidie88/currency-exchange-sevice:topic
+  390  docker image rm sidie88/currency-exchange-sevice:v2
+  391  docker image rm sidie88/currency-exchange-sevice:v3
+  392  docker image rm sidie88/currency-exchange-sevice:v4
+  393  docker image rm sidie88/currency-exchange-sevice:v5
+  394  clear
+  395  docker images
+  396  nano src/main/resources/logback.xml 
+  397  docker image build -t sidie88/currency-exchange-sevice:log-amqp .
+  398  docker image push sidie88/currency-exchange-sevice:log-amqp
+  399  kubectl --record deployment.apps/currency-exchange-pod  set image deployment.v1.apps/currency-exchange-pod currency-exchange=sidie88/currency-exchange-sevice:log-amqp
+  400  kubectl rollout status deployment.v1.apps/currency-exchange-pod
+  401  docker container prune
+  402  docker image prune
+  403  kubectl get services
+  404  curl localhost:8000/currency-exchange/from/USD/to/IDR
+  405  helm
+  406  kubectl create namespace cicd
+  407  helm
+  408  cd /opt/linux-amd64/helm 
+  409  cd /opt/
+  410  ls
+  411  cd linux-amd64/
+  412  ls
+  413  pwd
+  414  helm
+  415  helm repo update
+  416  helm init --client-only
+  417  helm ls
+  418  helm install stable/jenkins --version 1.5.7 --namespace cicd
+  419   printf $(kubectl get secret --namespace cicd bulging-bird-jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  420   export SERVICE_IP=$(kubectl get svc --namespace cicd bulging-bird-jenkins --template "{{ range (index .status.loadBalancer.ingress 0) }}{{ . }}{{ end }}")
+  421    echo http://$SERVICE_IP:8080/loginkubectl get svc --namespace cicd -w bulging-bird-jenkins
+  422  kubectl get all -n cicd
+  423  kubectl edit services bulging-bird-jenkins
+  424  kubectl edit services bulging-bird-jenkins -n cicd
+  425  kubectl get all -n cicd
+  426  kubectl get pods
+  427  helm repo add incubator http://storage.googleapis.com/kubernetes-charts-incubator
+  428  helm install --name kafka-server incubator/kafka
+  429  helm ls
+  430  helm delete kafka-server --purge
+  431  helm install --name kafka-server --set external.type=NodePort incubator/kafka
+  432  kubectl get pods | grep kafka
+  433  kubectl get deployment
+  434  kubectl get pods | grep kafka
+  435  kubectl describe pods kafka-server-0
+  436  mkdir kafka-volume
+  437  cd persistence_volume/
+  438  ls
+  439  helm ls
+  440  helm delete bulging-bird
+  441  helm
+  442  helm install --name jenkins --set master.serviceType=NodePort --namesapce cicd stable/jenkins
+  443  helm install --name jenkins --set master.serviceType=NodePort --namespace cicd stable/jenkins
+  444   printf $(kubectl get secret --namespace cicd jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  445  export NODE_PORT=$(kubectl get --namespace cicd -o jsonpath="{.spec.ports[0].nodePort}" services jenkins)
+  446    export NODE_IP=$(kubectl get nodes --namespace cicd -o jsonpath="{.items[0].status.addresses[0].address}")
+  447    echo http://$NODE_IP:$NODE_PORT/login
+  448  history > helm-jenkins.txt
+  449  kubectl get pods -n cicd
+  450  kubectl describe pods jenkins-8598fc5f7c-qzq7z
+  451  kubectl describe pods jenkins-8598fc5f7c-qzq7z -n cicd
+  452  mkdir data
+  453  mkdir persistence_volume
+  454  cd persistence_volume/
+  455  nano pv-volume.yaml
+  456  cd ../
+  457  ls data/
+  458  pwd
+  459  cd data/
+  460  pwd
+  461  cat ../persistence_volume/pv-volume.yaml 
+  462  cd ../persistence_volume/
+  463  kubectl apply -f pv-volume.yaml 
+  464  nano pv-apiVersion: v1.yaml 
+  465  nano pv-claim.yaml 
+  466  ls
+  467  kubectl apply -f pv-claim.yaml 
+  468  kubecl get pvc
+  469  kubectl get pvc
+  470  helm ls
+  471  helm delete jenkins
+  472  helm install --name jenkins --set master.serviceType=NodePort --set --set persistence.existingClaim=task-pv-claim  --namespace cicd stable/jenkins
+  473  helm install --name jenkins --set master.serviceType=NodePort --set persistence.existingClaim=task-pv-claim  --namespace cicd stable/jenkins
+  474  helm del --purge jenkins
+  475  helm install --name jenkins --set master.serviceType=NodePort --set persistence.existingClaim=task-pv-claim  --namespace cicd stable/jenkins
+  476  printf $(kubectl get secret --namespace cicd jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  477  export NODE_PORT=$(kubectl get --namespace cicd -o jsonpath="{.spec.ports[0].nodePort}" services jenkins)
+  478  export NODE_IP=$(kubectl get nodes --namespace cicd -o jsonpath="{.items[0].status.addresses[0].address}")
+  479  echo http://$NODE_IP:$NODE_PORT/login
+  480  kubectl get pods -n cicd
+  481  kubectl describe pods jenkins-7d9668c7d4-t4lsh
+  482  kubectl describe pods jenkins-7d9668c7d4-t4lsh -n cicd
+  483  helm delete jenkins
+  484  helm del --purge jenkins
+  485  helm install --name jenkins --set master.serviceType=NodePort --set persistence.existingClaim=task-pv-claim stable/jenkins
+  486  kubectl get pods
+  487  kubectl get pods | grep jenkins
+  488  kubectl describe pods jenkins-c9cf9c8fb-4r8q4
+  489  cd ../
+  490  ls
+  491  history > helm-jenkins.txt
+  492  cat helm-jenkins.txt 
+  493  clear
+  494  kubectl describe pods jenkins-c9cf9c8fb-4r8q4
+  495  kubectl get pods | grep jenkins
+  496  cat helm-jenkins.txt 
+  497  printf $(kubectl get secret --namespace cicd jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  498  printf $(kubectl get secret jenkins -o jsonpath="{.data.jenkins-admin-password}" | base64 --decode);echo
+  499  export NODE_PORT=$(kubectl get -o jsonpath="{.spec.ports[0].nodePort}" services jenkins)
+  500   export NODE_IP=$(kubectl get nodes -o jsonpath="{.items[0].status.addresses[0].address}")
+  501  echo http://$NODE_IP:$NODE_PORT/login
+  502  history > helm-jenkins.txt
+  503  ls
+  504  kubectl get pods
+  505  kubectl exec -it jenkins-c9cf9c8fb-4r8q4 -- /bin/bash
+  506  kubectl cluster-info
+  507  nano .kube/config 
+  508  cd persistence_volume/
+  509  clear
+  510  ls
+  511  cp pv-volume.yaml pv-volume-kafka.yaml 
+  512  cp pv-claim.yaml pv-claim-kafka.yaml 
+  513  ls
+  514  nano pv-claim-kafka.yaml 
+  515  kubectl get pods | grep kafka
+  516  kubectl describe pods kafka-server-0
+  517  nano pv-claim-kafka.yaml 
+  518  nano pv-volume-kafka.yaml 
+  519  cat pv-volume
+  520  cat pv-volume.yaml 
+  521  cat pv-claim.yaml 
+  522  cd persistence_volume/
+  523  ls
+  524  nano pv-claim-kafka.yaml 
+  525  nano pv-volume.yaml 
+  526  kukbectl apply -f pv-volume.yaml 
+  527  kubectl apply -f pv-volume.yaml 
+  528  ls
+  529  rm pv-volume-kafka.yaml 
+  530  ls
+  531  clear
+  532  kubectl apply -f pv-claim-kafka.yaml 
+  533  kubectl get pods
+  534  kubectl get pods | grep kafka
+  535  helm ls
+  536  helm delete kafka-server
+  537  helm del kafka-server --purge
+  538  helm install --name jenkins --set master.serviceType=NodePort --set persistence.existingClaim=datadir-kafka-server-0 stable/jenkins
+  539  history | grep kafka
+  540  helm install --name kafka-server --set external.type=NodePort incubator/kafka
+  541  kubectl get pods | grep kafka
+  542  kubectl describe pods kafka-server-0
+  543  helm del kafka-server --purge
+  544  clear
+  545  helm install --name kafka-server --set external.type=NodePort --set persistence.enabled=true --set persistence.size=2Gi --set persistence.mountPath=/home/tarsidi/data --set persistence.storageClass=manual  incubator/kafka
+  546  kubectl get pods | grep kafka
+  547  kubectl describe pods kafka-server-zookeeper-0 
+  548  kubectl get pods | grep kafka
+  549  kubectl describe pods kafka-server-zookeeper-0 
+  550  kubectl get pods | grep kafka
+  551  kubectl describe pods kafka-server-0
+  552  kubectl get pvc
+  553  kubectl describe pvc datadir-kafka-server-0
+  554  kubectl delete pvc datadir-kafka-server-0
+  555  kubectl get pvc
+  556  kubectl describe pods kafka-server-0
+  557  nano pv-claim-kafka.yaml 
+  558  ls
+  559  cp pv-volume.yaml pv-volume-kafka.yaml 
+  560  nano pv-volume-kafka.yaml 
+  561  cd ../
+  562  mkdir kafka-data
+  563  ll
+  564  rmdir kafka-data/
+  565  nano pv-volume-kafka.yaml 
+  566  nano persistence_volume/pv-volume-kafka.yaml 
+  567  cd persistence_volume/
+  568  ls
+  569  clear
+  570  ls
+  571  kubectl apply -f pv-volume-kafka.yaml 
+  572  nano pv-claim-kafka.yaml 
+  573  nano pv-volume-kafka.yaml 
+  574  kubectl apply -f pv-volume-kafka.yaml 
+  575  cat pv-volume-kafka.yaml 
+  576  cat pv-claim-kafka.yaml 
+  577  kubectl apply -f pv-volume-kafka.yaml 
+  578  kubectl get pvc
+  579  kubectl apply -f pv-claim-kafka.yaml 
+  580  kubectl get pvc
+  581  helm ls
+  582  kubectl get pods | grep kafka
+  583  kubectl describe pods kafka-server-0
+  584  history > helm-kafka.txt
