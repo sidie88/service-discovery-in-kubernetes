@@ -56,7 +56,7 @@ node {
     sshCommand remote: remote, command: "kubectl --record "+
         " deployment.apps/currency-conversion-pod -n tarsidi"+
         " set image deployment.v1.apps/currency-conversion-pod " + 
-        " currency-conversion=sidie88/currency-conversion-service:$BUILD_TAG"
+        " currency-conversion-service=sidie88/currency-conversion-service:$BUILD_TAG"
   }
   stage('Build microservices-logging') {
 	withCredentials([usernamePassword(credentialsId: 'sidie88-hub.docker.com', usernameVariable: 'USERNAME', passwordVariable: 'PASSWORD')]) {
@@ -72,6 +72,6 @@ node {
     sshCommand remote: remote, command: "kubectl --record "+
         " deployment.apps/microservices-logging-pod -n tarsidi"+
         " set image deployment.v1.apps/microservices-logging-pod " + 
-        " microservices-logging=sidie88/microservices-logging:$BUILD_TAG"
+        " microservices-logging-service=sidie88/microservices-logging:$BUILD_TAG"
   }
 }
